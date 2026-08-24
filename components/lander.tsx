@@ -183,40 +183,47 @@ function LanderContent() {
         </div>
 
         {/* Pills */}
-        <div className="flex flex-wrap justify-center gap-[7px]">
+        <div className="-mb-2 flex flex-wrap justify-center gap-[7px]">
           {[
             {
-              label: "Fast Payouts",
-              path: (
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-              ),
-            },
-            {
-              label: "100+ Games",
+              label: "PayPal",
               path: (
                 <>
-                  <rect x="6" y="11" width="12" height="10" rx="2" />
-                  <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                  <line x1="12" y1="15" x2="12" y2="17" />
+                  <path d="M7 21h4a5 5 0 0 0 5-5 4 4 0 0 0-4-4H8l-2 9z" />
+                  <path d="M9 12h4a5 5 0 0 0 5-5 4 4 0 0 0-4-4H10L8 12" />
                 </>
               ),
             },
             {
-              label: "Daily Bonuses",
+              label: "Bank Transfer",
               path: (
                 <>
-                  <polyline points="20 12 20 22 4 22 4 12" />
-                  <rect x="2" y="7" width="20" height="5" />
-                  <path d="M12 22V7" />
-                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                  <line x1="3" y1="21" x2="21" y2="21" />
+                  <line x1="5" y1="21" x2="5" y2="10" />
+                  <line x1="10" y1="21" x2="10" y2="10" />
+                  <line x1="14" y1="21" x2="14" y2="10" />
+                  <line x1="19" y1="21" x2="19" y2="10" />
+                  <polygon points="12 2 21 8 3 8 12 2" />
                 </>
               ),
             },
             {
-              label: "Safe & Legit",
+              label: "Crypto",
               path: (
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <>
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M9 8h4.5a2 2 0 0 1 0 4H9m0 0h5a2 2 0 0 1 0 4H9m0-8v10m2-11v1m0 9v1" />
+                </>
+              ),
+            },
+            {
+              label: "Gift Cards",
+              path: (
+                <>
+                  <rect x="3" y="6" width="18" height="14" rx="2" />
+                  <line x1="3" y1="11" x2="21" y2="11" />
+                  <path d="M12 6V4m0 2c-1.5 0-3-1-3-2.5S10.5 2 12 6zm0 0c1.5 0 3-1 3-2.5S13.5 2 12 6z" />
+                </>
               ),
             },
           ].map((pill) => (

@@ -211,7 +211,7 @@ function LanderContent() {
             {[0, 1, 2, 3, 4].map((i) => (
               <span
                 key={i}
-                className="flex h-[16px] w-[16px] items-center justify-center rounded-[2px] bg-[#00b67a]"
+                className="flex h-[16px] w-[16px] items-center justify-center rounded-[2px] bg-[#2cc76e]"
               >
                 <svg viewBox="0 0 24 24" className="h-[11px] w-[11px] fill-white">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -221,7 +221,7 @@ function LanderContent() {
           </div>
 
           <span className="text-[12px] font-semibold">
-            <span className="text-[#00b67a]">Trustpilot</span>
+            <span className="text-[#2cc76e]">Trustpilot</span>
             <span className="text-[#e5e5e5]"> · 4.6</span>
           </span>
         </div>

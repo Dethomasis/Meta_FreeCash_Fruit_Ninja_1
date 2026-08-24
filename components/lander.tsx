@@ -183,7 +183,7 @@ function LanderContent() {
         </div>
 
         {/* Pills */}
-        <div className="flex flex-nowrap justify-center gap-[7px]">
+        <div className="flex flex-nowrap justify-center gap-[7px] max-[430px]:mx-auto max-[430px]:grid max-[430px]:w-full max-[430px]:max-w-[360px] max-[430px]:grid-cols-2 max-[430px]:gap-[10px]">
           {[
             { label: "PayPal", emoji: "💙" },
             { label: "Venmo", emoji: "💸" },
@@ -192,7 +192,7 @@ function LanderContent() {
           ].map((pill) => (
             <div
               key={pill.label}
-              className="inline-flex items-center gap-[6px] rounded-full border border-[#222] bg-[rgba(20,20,20,0.5)] px-3 py-[7px]"
+              className="inline-flex items-center gap-[6px] rounded-full border border-[#222] bg-[rgba(20,20,20,0.5)] px-3 py-[7px] max-[430px]:w-full max-[430px]:justify-center"
             >
               <span className="text-[13px] leading-none" aria-hidden="true">
                 {pill.emoji}

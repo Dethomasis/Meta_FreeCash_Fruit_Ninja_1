@@ -6,42 +6,6 @@ import Image from "next/image"
 import { useSearchParams } from "next/navigation"
 import { Suspense, useCallback, useEffect, useState } from "react"
 
-type Offer = {
-  name: string
-  img: string
-  sub: string
-  price: string
-  rating: string
-  hot?: boolean
-  highlight?: boolean
-}
-
-const OFFERS: Offer[] = [
-  {
-    name: "Royal Match",
-    img: "/assets/royal_match_logo.png",
-    sub: "Match & earn per milestone",
-    price: "$390",
-    rating: "4.8",
-    hot: true,
-    highlight: true,
-  },
-  {
-    name: "RAID: Shadow Legends",
-    img: "/assets/raid_shadow_legends_logo.png",
-    sub: "Level up & earn per milestone",
-    price: "$393",
-    rating: "4.7",
-  },
-  {
-    name: "Dice Dreams",
-    img: "/assets/dice_dreamers_logo.png",
-    sub: "Roll & earn per milestone",
-    price: "$155",
-    rating: "4.6",
-  },
-]
-
 type Review = {
   initials: string
   name: string
@@ -276,72 +240,16 @@ function LanderContent() {
           ))}
         </div>
 
-        {/* Offers */}
-        <div className="flex flex-col gap-[10px]">
-          <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#888]">
-            Top Earning Games
-          </span>
-
-          <div className="flex flex-col gap-[10px]">
-            {OFFERS.map((offer) => (
-              <button
-                key={offer.name}
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className={`flex items-center gap-3 rounded-[16px] border p-[14px] text-left transition-transform active:scale-[0.975] ${
-                  offer.highlight
-                    ? "border-[rgba(44,199,110,0.38)] bg-[rgba(20,20,20,0.72)]"
-                    : "border-[#222] bg-[rgba(20,20,20,0.5)]"
-                }`}
-              >
-                <Image
-                  src={offer.img || "/placeholder.svg"}
-                  alt={offer.name}
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 shrink-0 rounded-[12px] object-cover"
-                />
-
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[14px] font-bold">{offer.name}</span>
-
-                    {offer.hot && (
-                      <span className="rounded-full bg-[#ff4500] px-2 py-[2px] text-[10px] font-extrabold uppercase tracking-[0.05em] text-white">
-                        HOT
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="mt-[3px] text-[12px] text-[#888]">
-                    {offer.sub}
-                  </p>
-                </div>
-
-                <div className="flex shrink-0 flex-col items-end gap-[3px] text-right">
-                  <span className="text-[16px] font-extrabold text-[#2cc76e]">
-                    {offer.price}
-                  </span>
-
-                  <div className="flex items-center gap-[3px]">
-                    <StarIcon className="h-[11px] w-[11px] fill-[#f5c518]" />
-                    <span className="text-[11px] text-[#888]">
-                      {offer.rating}
-                    </span>
-                  </div>
-                </div>
-
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-[15px] w-[15px] shrink-0 fill-none stroke-[#888] [stroke-width:2.5]"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            ))}
-          </div>
+        {/* Gameplay video */}
+        <div className="w-full overflow-hidden rounded-[16px] border border-[rgba(44,199,110,0.38)] bg-[#141414]">
+          <video
+            src="/assets/fruit-ninja-gameplay.mp4"
+            className="aspect-video w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
         </div>
 
         {/* Pro tip */}

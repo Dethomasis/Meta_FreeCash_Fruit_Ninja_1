@@ -183,68 +183,47 @@ function LanderContent() {
         </div>
 
         {/* Pills */}
-        <div className="-mb-2 flex flex-wrap justify-center gap-[7px]">
+        <div className="flex flex-nowrap justify-center gap-[7px]">
           {[
-            {
-              label: "PayPal",
-              path: (
-                <>
-                  <path d="M7 21h4a5 5 0 0 0 5-5 4 4 0 0 0-4-4H8l-2 9z" />
-                  <path d="M9 12h4a5 5 0 0 0 5-5 4 4 0 0 0-4-4H10L8 12" />
-                </>
-              ),
-            },
-            {
-              label: "Bank Transfer",
-              path: (
-                <>
-                  <line x1="3" y1="21" x2="21" y2="21" />
-                  <line x1="5" y1="21" x2="5" y2="10" />
-                  <line x1="10" y1="21" x2="10" y2="10" />
-                  <line x1="14" y1="21" x2="14" y2="10" />
-                  <line x1="19" y1="21" x2="19" y2="10" />
-                  <polygon points="12 2 21 8 3 8 12 2" />
-                </>
-              ),
-            },
-            {
-              label: "Crypto",
-              path: (
-                <>
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M9 8h4.5a2 2 0 0 1 0 4H9m0 0h5a2 2 0 0 1 0 4H9m0-8v10m2-11v1m0 9v1" />
-                </>
-              ),
-            },
-            {
-              label: "Gift Cards",
-              path: (
-                <>
-                  <rect x="3" y="6" width="18" height="14" rx="2" />
-                  <line x1="3" y1="11" x2="21" y2="11" />
-                  <path d="M12 6V4m0 2c-1.5 0-3-1-3-2.5S10.5 2 12 6zm0 0c1.5 0 3-1 3-2.5S13.5 2 12 6z" />
-                </>
-              ),
-            },
+            { label: "PayPal", emoji: "💙" },
+            { label: "Venmo", emoji: "💸" },
+            { label: "Bank transfer", emoji: "🏦" },
+            { label: "Gift cards", emoji: "🎁" },
           ].map((pill) => (
             <div
               key={pill.label}
               className="inline-flex items-center gap-[6px] rounded-full border border-[#222] bg-[rgba(20,20,20,0.5)] px-3 py-[7px]"
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-[13px] w-[13px] fill-none stroke-[#888] stroke-2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {pill.path}
-              </svg>
+              <span className="text-[13px] leading-none" aria-hidden="true">
+                {pill.emoji}
+              </span>
 
-              <span className="text-[11px] font-semibold text-[#888]">
+              <span className="whitespace-nowrap text-[11px] font-semibold text-[#888]">
                 {pill.label}
               </span>
             </div>
           ))}
+        </div>
+
+        {/* Trustpilot */}
+        <div className="-mt-1 -mb-2 flex items-center justify-center gap-[6px]">
+          <div className="flex items-center gap-[3px]">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <span
+                key={i}
+                className="flex h-[16px] w-[16px] items-center justify-center rounded-[2px] bg-[#00b67a]"
+              >
+                <svg viewBox="0 0 24 24" className="h-[11px] w-[11px] fill-white">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </span>
+            ))}
+          </div>
+
+          <span className="text-[12px] font-semibold">
+            <span className="text-[#00b67a]">Trustpilot</span>
+            <span className="text-[#e5e5e5]"> · 4.6</span>
+          </span>
         </div>
 
         {/* Gameplay video */}

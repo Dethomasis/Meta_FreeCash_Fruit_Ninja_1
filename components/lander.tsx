@@ -6,42 +6,6 @@ import Image from "next/image"
 import { useSearchParams } from "next/navigation"
 import { Suspense, useCallback, useEffect, useState } from "react"
 
-type Offer = {
-  name: string
-  img: string
-  sub: string
-  price: string
-  rating: string
-  hot?: boolean
-  highlight?: boolean
-}
-
-const OFFERS: Offer[] = [
-  {
-    name: "Royal Match",
-    img: "/assets/royal_match_logo.png",
-    sub: "Match & earn per milestone",
-    price: "$390",
-    rating: "4.8",
-    hot: true,
-    highlight: true,
-  },
-  {
-    name: "RAID: Shadow Legends",
-    img: "/assets/raid_shadow_legends_logo.png",
-    sub: "Level up & earn per milestone",
-    price: "$393",
-    rating: "4.7",
-  },
-  {
-    name: "Dice Dreams",
-    img: "/assets/dice_dreamers_logo.png",
-    sub: "Roll & earn per milestone",
-    price: "$155",
-    rating: "4.6",
-  },
-]
-
 type Review = {
   initials: string
   name: string
@@ -219,129 +183,59 @@ function LanderContent() {
         </div>
 
         {/* Pills */}
-        <div className="flex flex-wrap justify-center gap-[7px]">
+        <div className="flex flex-nowrap justify-center gap-[7px]">
           {[
-            {
-              label: "Fast Payouts",
-              path: (
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-              ),
-            },
-            {
-              label: "100+ Games",
-              path: (
-                <>
-                  <rect x="6" y="11" width="12" height="10" rx="2" />
-                  <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                  <line x1="12" y1="15" x2="12" y2="17" />
-                </>
-              ),
-            },
-            {
-              label: "Daily Bonuses",
-              path: (
-                <>
-                  <polyline points="20 12 20 22 4 22 4 12" />
-                  <rect x="2" y="7" width="20" height="5" />
-                  <path d="M12 22V7" />
-                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
-                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-                </>
-              ),
-            },
-            {
-              label: "Safe & Legit",
-              path: (
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              ),
-            },
+            { label: "PayPal", emoji: "💙" },
+            { label: "Venmo", emoji: "💸" },
+            { label: "Bank transfer", emoji: "🏦" },
+            { label: "Gift cards", emoji: "🎁" },
           ].map((pill) => (
             <div
               key={pill.label}
               className="inline-flex items-center gap-[6px] rounded-full border border-[#222] bg-[rgba(20,20,20,0.5)] px-3 py-[7px]"
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-[13px] w-[13px] fill-none stroke-[#888] stroke-2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {pill.path}
-              </svg>
+              <span className="text-[13px] leading-none" aria-hidden="true">
+                {pill.emoji}
+              </span>
 
-              <span className="text-[11px] font-semibold text-[#888]">
+              <span className="whitespace-nowrap text-[11px] font-semibold text-[#888]">
                 {pill.label}
               </span>
             </div>
           ))}
         </div>
 
-        {/* Offers */}
-        <div className="flex flex-col gap-[10px]">
-          <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#888]">
-            Top Earning Games
-          </span>
-
-          <div className="flex flex-col gap-[10px]">
-            {OFFERS.map((offer) => (
-              <button
-                key={offer.name}
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className={`flex items-center gap-3 rounded-[16px] border p-[14px] text-left transition-transform active:scale-[0.975] ${
-                  offer.highlight
-                    ? "border-[rgba(44,199,110,0.38)] bg-[rgba(20,20,20,0.72)]"
-                    : "border-[#222] bg-[rgba(20,20,20,0.5)]"
-                }`}
+        {/* Trustpilot */}
+        <div className="-mt-1 -mb-2 flex items-center justify-center gap-[6px]">
+          <div className="flex items-center gap-[3px]">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <span
+                key={i}
+                className="flex h-[16px] w-[16px] items-center justify-center rounded-[2px] bg-[#2cc76e]"
               >
-                <Image
-                  src={offer.img || "/placeholder.svg"}
-                  alt={offer.name}
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 shrink-0 rounded-[12px] object-cover"
-                />
-
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[14px] font-bold">{offer.name}</span>
-
-                    {offer.hot && (
-                      <span className="rounded-full bg-[#ff4500] px-2 py-[2px] text-[10px] font-extrabold uppercase tracking-[0.05em] text-white">
-                        HOT
-                      </span>
-                    )}
-                  </div>
-
-                  <p className="mt-[3px] text-[12px] text-[#888]">
-                    {offer.sub}
-                  </p>
-                </div>
-
-                <div className="flex shrink-0 flex-col items-end gap-[3px] text-right">
-                  <span className="text-[16px] font-extrabold text-[#2cc76e]">
-                    {offer.price}
-                  </span>
-
-                  <div className="flex items-center gap-[3px]">
-                    <StarIcon className="h-[11px] w-[11px] fill-[#f5c518]" />
-                    <span className="text-[11px] text-[#888]">
-                      {offer.rating}
-                    </span>
-                  </div>
-                </div>
-
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-[15px] w-[15px] shrink-0 fill-none stroke-[#888] [stroke-width:2.5]"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="9 18 15 12 9 6" />
+                <svg viewBox="0 0 24 24" className="h-[11px] w-[11px] fill-white">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                 </svg>
-              </button>
+              </span>
             ))}
           </div>
+
+          <span className="text-[12px] font-semibold">
+            <span className="text-[#2cc76e]">Trustpilot</span>
+            <span className="text-[#e5e5e5]"> · 4.6</span>
+          </span>
+        </div>
+
+        {/* Gameplay video */}
+        <div className="w-full overflow-hidden rounded-[16px] border border-[rgba(44,199,110,0.38)] bg-[#141414]">
+          <video
+            src="/assets/fruit-ninja-gameplay.mp4"
+            className="aspect-video w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
         </div>
 
         {/* Pro tip */}

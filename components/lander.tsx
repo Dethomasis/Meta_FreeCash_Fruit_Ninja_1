@@ -187,8 +187,8 @@ function LanderContent() {
           {[
             { label: "PayPal", emoji: "💙" },
             { label: "Venmo", emoji: "💸" },
-            { label: "Bank transfer", emoji: "🏦" },
-            { label: "Gift cards", emoji: "🎁" },
+            { label: "Bank Transfer", emoji: "🏦" },
+            { label: "Gift Cards", emoji: "🎁" },
           ].map((pill) => (
             <div
               key={pill.label}
@@ -222,7 +222,7 @@ function LanderContent() {
 
           <span className="text-[12px] font-semibold">
             <span className="text-[#2cc76e]">Trustpilot</span>
-            <span className="text-[#e5e5e5]"> · 4.6</span>
+            <span className="text-[#e5e5e5]"> · 4.7</span>
           </span>
         </div>
 
@@ -235,6 +235,12 @@ function LanderContent() {
             muted
             loop
             playsInline
+            preload="auto"
+            onEnded={(e) => {
+              const video = e.currentTarget
+              video.currentTime = 0
+              void video.play()
+            }}
           />
         </div>
 
